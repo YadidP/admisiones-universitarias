@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.MisDocumentosController">
+    <children>
+        <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <Label styleClass="h1" text="Gestión de Documentos de Postulación" />
+                <Label text="En esta sección puedes subir los documentos requeridos para tu postulación y verificar su estado." />
+                <TableView fx:id="documentosTableView" prefHeight="300.0">
+                    <columns>
+                        <TableColumn fx:id="documentoCol" prefWidth="300.0" text="Documento Requerido" />
+                        <TableColumn fx:id="estadoCol" prefWidth="150.0" text="Estado" />
+                        <TableColumn fx:id="accionCol" prefWidth="150.0" text="Acción" />
+                    </columns>
+                </TableView>
+                <TitledPane animated="false" text="Observaciones Recibidas">
+                    <content>
+                        <ScrollPane fitToWidth="true">
+                            <content>
+                                <TextFlow fx:id="observacionesTextFlow" />
+                            </content>
+                        </ScrollPane>
+                    </content>
+                </TitledPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

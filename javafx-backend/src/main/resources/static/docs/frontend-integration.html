@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Frontend Integration Guide</title>
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:20px}</style>
+</head>
+<body>
+<h1>Guía de integración Frontend → Backend</h1>
+<p>Base URL de la API: <code>http://localhost:8080/api</code></p>
+
+<h2>Autenticación / Usuarios</h2>
+<p>GET /api/users - Lista de usuarios</p>
+<p>GET /api/postulantes/ci/{ci} - Obtener postulante por CI</p>
+
+<h2>Postulantes</h2>
+<p>POST /api/postulantes</p>
+<pre>{
+  "ci": "1234567",
+  "nombres": "Juan",
+  "apellidos": "Perez",
+  "email": "juan@example.com",
+  "telefono": "099123456"
+}</pre>
+
+<h2>Carreras</h2>
+<p>GET /api/carreras - Lista de carreras</p>
+
+<h2>Documentos</h2>
+<p>GET /api/postulantes/{postulanteId}/documentos - Lista documentos de un postulante</p>
+<p>POST /api/postulantes/{postulanteId}/documentos/{documentoId}/upload - Subir archivo (body: binary, Content-Type: application/octet-stream)</p>
+
+<h2>Resultados</h2>
+<p>GET /api/postulantes/{postulanteId}/resultado - Obtener resultado JSON</p>
+<p>GET /api/postulantes/{postulanteId}/resultado/pdf - Descargar PDF</p>
+
+<h2>Notas</h2>
+<ul>
+  <li>Todos los endpoints devuelven y aceptan JSON salvo donde se indica "binary".</li>
+  <li>Si el frontend utiliza `HttpClient` de Java, mapear JSON con Jackson (`ObjectMapper`).</li>
+  <li>En el flujo de login, el frontend debe obtener y almacenar `User.id` para operaciones de documentos/resultados.</li>
+</ul>
+</body>
+</html>

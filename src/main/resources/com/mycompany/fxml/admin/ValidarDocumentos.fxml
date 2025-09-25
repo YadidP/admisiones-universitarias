@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.admin.ValidarDocumentosController">
+    <children>
+        <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <Label styleClass="h1" text="Validación de Documentos de Admisión" />
+                <Label text="Revise y valide los documentos presentados por los postulantes." />
+                <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
+                    <items>
+                        <AnchorPane>
+                            <children>
+                                <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label style="-fx-font-weight: bold;" text="Postulantes con Documentos Pendientes" />
+                                        <TableView fx:id="postulantesTableView" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn fx:id="postulanteNombreCol" prefWidth="150.0" text="Nombre" />
+                                                <TableColumn fx:id="postulanteCiCol" prefWidth="100.0" text="CI" />
+                                                <TableColumn fx:id="postulanteCarreraCol" prefWidth="150.0" text="Carrera" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane>
+                            <children>
+                                <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label fx:id="documentosTitleLabel" style="-fx-font-weight: bold;" text="Documentos de: (Seleccione un postulante)" />
+                                        <TableView fx:id="documentosTableView" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn fx:id="documentoNombreCol" prefWidth="200.0" text="Documento" />
+                                                <TableColumn fx:id="documentoEstadoCol" prefWidth="100.0" text="Estado" />
+                                                <TableColumn fx:id="documentoAccionCol" prefWidth="150.0" text="Acción" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

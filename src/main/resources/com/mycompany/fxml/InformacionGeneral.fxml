@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.InformacionGeneralController">
+   <children>
+      <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <VBox spacing="20.0">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+               <children>
+                  <Label styleClass="h1" text="Información para Postulantes" />
+                  <Accordion>
+                    <panes>
+                      <TitledPane animated="false" text="Requisitos de Postulación">
+                           <content>
+                              <TextFlow>
+                                 <children>
+                                    <Text text="Para postular a la universidad, todos los estudiantes deben presentar los siguientes documentos:\n\n1. Fotocopia legalizada del Título de Bachiller.\n2. Certificado de notas original de los últimos cuatro años de secundaria.\n3. Fotocopia simple de la Cédula de Identidad.\n4. Certificado de nacimiento original.\n5. Comprobante de pago por derecho de examen de ingreso.\n\nPara modalidades especiales como excelencia académica o postulantes extranjeros, por favor revise la sección de 'Modalidades de Ingreso'." />
+                                 </children>
+                              </TextFlow>
+                           </content>
+                      </TitledPane>
+                      <TitledPane animated="false" text="Temario Oficial del Examen">
+                           <content>
+                              <TextFlow>
+                                 <children>
+                                    <Text text="El temario oficial para el examen de ingreso se publicará próximamente. 
+
+Las asignaturas a evaluar generalmente incluyen:
+- Matemáticas
+- Física
+- Química
+- Lenguaje
+- Biología
+
+Se recomienda a los postulantes revisar exámenes de gestiones pasadas como referencia, los cuales estarán disponibles para descarga en esta misma sección una vez se habilite." />
+                                 </children>
+                              </TextFlow>
+                           </content>
+                      </TitledPane>
+                      <TitledPane animated="false" text="Croquis de la Universidad">
+                           <content>
+                              <VBox alignment="CENTER" spacing="10.0">
+                                 <children>
+                                    <Label text="Ubicación de puntos clave para el proceso de admisión. (Imagen de ejemplo)" />
+                                    <ImageView fx:id="mapImageView" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="Puntos de interés: Cajas, Recepción de Documentos, Oficinas de Admisión." />
+                                 </children>
+                              </VBox>
+                           </content>
+                      </TitledPane>
+                        <TitledPane animated="false" text="Modalidades de Ingreso">
+                           <content>
+                              <TextFlow>
+                                 <children>
+                                    <Text text="La universidad ofrece varias modalidades de ingreso:
+
+- Examen de Ingreso: La modalidad principal para todos los bachilleres.
+- Cursos Preuniversitarios: Cursos de nivelación y preparación que otorgan el ingreso al aprobarlos.
+- Admisión por Excelencia Académica: Para los mejores estudiantes de cada promoción.
+- Admisión de Estudiantes Extranjeros: Proceso especial para postulantes con estudios en el exterior.
+
+Cada modalidad tiene requisitos y fechas específicas que se detallan en la convocatoria oficial." />
+                                 </children>
+                              </TextFlow>
+                           </content>
+                        </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

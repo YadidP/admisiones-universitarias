@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.auth.LoginController">
+   <children>
+      <VBox alignment="CENTER" layoutX="250.0" layoutY="150.0" prefWidth="300.0" spacing="15.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0">
+         <children>
+            <Label styleClass="h1" text="Sistema de Admisión" />
+            <VBox spacing="5.0">
+               <children>
+                  <Label text="Usuario o Correo Electrónico" />
+                  <TextField fx:id="usernameField" promptText="Ingrese su usuario" />
+               </children>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <Label text="Contraseña" />
+                  <PasswordField fx:id="passwordField" promptText="Ingrese su contraseña" />
+               </children>
+            </VBox>
+            <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="45.0" prefWidth="300.0" text="Ingresar" />
+            <Hyperlink onAction="#handleRegisterLinkAction" text="¿No tienes una cuenta? Regístrate aquí" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
