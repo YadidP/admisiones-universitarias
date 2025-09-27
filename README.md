@@ -1,120 +1,65 @@
-# JavaFX Admissions Application
+# Express Admission System
 
-This project consists of a JavaFX frontend application and a Spring Boot backend, designed to manage an admissions process.
-
-## Table of Contents
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Setup Instructions](#setup-instructions)
-  - [Backend Setup](#backend-setup)
-  - [Frontend Setup](#frontend-setup)
-- [Login Credentials](#login-credentials)
-- [Troubleshooting](#troubleshooting)
-- [Project Structure](#project-structure)
-
-## Features
-- User registration and authentication (Admin and Postulante roles).
-- Admin panel (to be fully implemented).
-- Postulante panel with various functionalities (e.g., viewing exam results, managing documents).
+This project is a web-based admission system built with Node.js, Express.js, and PostgreSQL. It replaces the original Java/JavaFX/Spring Boot application with a modern JavaScript stack.
 
 ## Prerequisites
-Before you begin, ensure you have the following installed:
-- **Java Development Kit (JDK) 21 or higher**
-- **Apache Maven 3.8.x or higher**
-- **Docker Desktop** (for running the PostgreSQL database)
 
-## Setup Instructions
+Before you begin, ensure you have the following installed on your system:
 
-### Backend Setup
-1.  **Navigate to the backend directory:**
+- [Node.js](https://nodejs.org/) (v20 or later)
+- [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/install/)
+
+## Getting Started
+
+Follow these steps to get the application up and running:
+
+1.  **Clone the repository:**
+
     ```bash
-    cd javafx-backend
+    git clone <repository-url>
+    cd <repository-directory>
     ```
-2.  **Start the PostgreSQL database using Docker Compose:**
-    This will create and start a PostgreSQL container.
-    ```bash
-    docker-compose up -d
-    ```
-    Wait a few seconds for the database to initialize.
-3.  **Clean and Compile the Spring Boot application:**
-    ```bash
-    mvn clean compile
-    ```
-4.  **Run the Spring Boot backend application:**
-    ```bash
-    mvn spring-boot:run
-    ```
-    The backend will start on `http://localhost:8080`. You should see messages indicating that seed data (Carreras and Users) are created if the database is empty.
 
-### Frontend Setup
-1.  **Navigate back to the project root and then to the frontend directory:**
+2.  **Install dependencies:**
+
+    This project uses npm to manage its dependencies. Run the following command to install them:
+
     ```bash
-    cd ..
-    cd javafx-app
+    npm install
     ```
-    *(Note: If you are already in the `javafx-app` directory, you can skip the `cd ..` command.)*
-2.  **Clean and Run the JavaFX frontend application:**
+
+3.  **Set up environment variables:**
+
+    The backend service uses environment variables to connect to the database. These are already configured in the `docker-compose.yml` file for the Docker environment, so no `.env` file is needed for local development with Docker.
+
+4.  **Build and run the application with Docker Compose:**
+
+    This command will build the Docker image for the backend service and start both the backend and the PostgreSQL database containers.
+
     ```bash
-    mvn clean javafx:run
+    docker-compose up --build
     ```
-    The JavaFX application window should appear.
 
-## Login Credentials
-The application includes seed data for testing purposes.
+    The `--build` flag ensures that the backend image is rebuilt if there are any changes to the code.
 
--   **Administrator:**
-    -   **Username:** `admin`
-    -   **Password:** `admin123`
--   **Postulante (Applicant):**
-    -   **Username:** `postulante`
-    -   **Password:** `test123`
+## How to Use the Application
 
-You can also register new `POSTULANTE` users through the application's registration form.
+Once the services are running, you can access the application in your web browser:
 
-## Troubleshooting
--   **`com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "password"`:** This error occurs if the frontend `User` model tries to deserialize a JSON object containing a `password` field, but the `User` class is not configured to ignore it. This has been addressed by adding `@JsonIgnoreProperties(ignoreUnknown = true)` to `com.mycompany.model.User`. Ensure your `javafx-app` is rebuilt after this change.
--   **`java.lang.NullPointerException: Cannot invoke "com.mycompany.model.ResultadoExamen.getEstado()" because "resultado" is null`:** This error indicates that the `VerResultadosController` is trying to display exam results for a user, but no results are found. This has been addressed by adding a null check in the `updateUI` method of `VerResultadosController`. Ensure your `javafx-app` is rebuilt after this change.
--   **"Placeholder map image not found. Please create 'university_map.png'."**: This is a warning indicating that the `university_map.png` file is missing. You can place an image named `university_map.png` in `src/main/resources/com/mycompany/` within the `javafx-app` project to resolve this.
+-   **Frontend:** The web interface is available at [http://localhost:3000](http://localhost:3000).
+-   **Backend API:** The API endpoints are accessible under the `/api` path. For example, you can get a list of all users by making a GET request to `http://localhost:3000/api/users`.
 
 ## Project Structure
-```
-javafx-app/
-├───.github/
-├───.vscode/
-├───javafx-backend/
-│   ├───docker-compose.yml
-│   ├───pom.xml
-│   └───src/
-│       └───main/
-│           └───java/
-│               └───com/
-│                   └───mycompany/
-│                       └───javafx/
-│                           └───backend/
-│                               └───... (Spring Boot application files)
-├───src/
-│   └───main/
-│       ├───java/
-│       │   └───com/
-│       │       └───mycompany/
-│       │           ├───App.java
-│       │           ├───auth/
-│       │           │   └───LoginController.java
-│       │           │   └───RegisterController.java
-│       │           ├───controllers/
-│       │           │   └───... (JavaFX controllers)
-│       │           ├───model/
-│       │           │   └───User.java
-│       │           │   └───... (JavaFX models)
-│       │           └───services/
-│       │               └───... (JavaFX services)
-│       └───resources/
-│           └───com/
-│               └───mycompany/
-│                   ├───css/
-│                   │   └───styles.css
-│                   └───fxml/
-│                       └───... (FXML files)
-├───pom.xml
-└───README.md (This file)
-```
+
+The project is organized into the following directories:
+
+-   `public/`: Contains the frontend static files (HTML, CSS, and JavaScript).
+-   `src/`: Contains the backend source code.
+    -   `config/`: Database configuration with Sequelize.
+    -   `controllers/`: Express controllers to handle incoming requests.
+    -   `models/`: Sequelize data models for the database tables.
+    -   `routes/`: Express routes to define the API endpoints.
+    -   `services/`: Business logic for the application.
+-   `Dockerfile`: Defines the Docker image for the backend service.
+-   `docker-compose.yml`: Orchestrates the backend and database services.
+-   `package.json`: Lists the project's dependencies and scripts.
